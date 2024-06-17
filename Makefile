@@ -1,7 +1,7 @@
 build:
 	docker-compose build
 
-bundle:
+install:
 	docker-compose run --rm app bundle install
 
 test:
