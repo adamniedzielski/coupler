@@ -20,3 +20,5 @@ Metrics/BlockLength:
   Exclude:
     - 'spec/**/*'
     - "config/**/*"
+Rails/I18nLocaleTexts:
+  Enabled: false
