@@ -7,6 +7,10 @@ class FriendProfilesController < ApplicationController
     @friend_profiles = current_user.friend_profiles
   end
 
+  def show
+    @friend_profile = current_user.friend_profiles.find(params[:id])
+  end
+
   def new
     @friend_profile = current_user.friend_profiles.build
   end
