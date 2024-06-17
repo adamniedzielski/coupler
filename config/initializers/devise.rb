@@ -14,7 +14,7 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = '5684fbdd9443f6801eb8fb87f08aa4fb2e5bfce8f5fd0da82d6d0eb64a15161820d6e8dab23496bba90d6a0160b54d186490080a617ad73de3f5555becc8b66f'
+  # config.secret_key = '5684fbdd9443f6801eb8fb87f08aa4fb2e5bfce8f5fd0'
 
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
@@ -24,7 +24,7 @@ Devise.setup do |config|
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
+  config.mailer_sender = "please-change-me-at-config-initializers-devise@example.com"
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
@@ -36,7 +36,7 @@ Devise.setup do |config|
   # Load and configure the ORM. Supports :active_record (default) and
   # :mongoid (bson_ext recommended) by default. Other ORMs may be
   # available as additional gems.
-  require 'devise/orm/active_record'
+  require "devise/orm/active_record"
 
   # ==> Configuration for any authentication mechanism
   # Configure which keys are used when authenticating a user. The default is
@@ -126,7 +126,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 12
 
   # Set up a pepper to generate the hashed password.
-  # config.pepper = 'c16fc8aedc058f48eb0dc8c75781c1924a7b93f4bfe44e9bedf0b544b788f97a244d13aa510140e8aa7a69c368b3b1f8e2b94f3790e13d73f2225ab4fbb24a46'
+  # config.pepper = 'c16fc8aedc058f48eb0dc8c75781c1924a7b93f4bfe44e9bedf0b544b7'
 
   # Send a notification to the original email when the user's email is changed.
   # config.send_email_changed_notification = false
