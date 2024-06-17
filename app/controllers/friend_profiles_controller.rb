@@ -11,6 +11,10 @@ class FriendProfilesController < ApplicationController
     @friend_profile = current_user.friend_profiles.build
   end
 
+  def edit
+    @friend_profile = current_user.friend_profiles.find(params[:id])
+  end
+
   def create
     @friend_profile = current_user.friend_profiles.build(friend_profile_params)
 
@@ -18,6 +22,16 @@ class FriendProfilesController < ApplicationController
       redirect_to friend_profiles_url, notice: "Profile was successfully created"
     else
       render :new, status: :unprocessable_entity
+    end
+  end
+
+  def update
+    @friend_profile = current_user.friend_profiles.find(params[:id])
+
+    if @friend_profile.update(friend_profile_params)
+      redirect_to friend_profiles_url, notice: "Profile was successfully updated"
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 

@@ -3,7 +3,7 @@
 <ul>
 	<% @friend_profiles.each do |friend_profile| %>
 		<li>
-			<%= friend_profile.name %>
+			<%= friend_profile.name %> <%= link_to "Edit", edit_friend_profile_path(friend_profile) %>
     </li>
 	<% end %>
 </ul>
