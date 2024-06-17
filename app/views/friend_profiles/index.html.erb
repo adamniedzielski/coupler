@@ -1,0 +1,9 @@
+<h1>Your friends profiles</h1>
+
+<ul>
+	<% @friend_profiles.each do |friend_profile| %>
+		<li>
+			<%= friend_profile.name %>
+    </li>
+	<% end %>
+</ul>
