@@ -35,6 +35,11 @@ class FriendProfilesController < ApplicationController
     end
   end
 
+  def destroy
+    current_user.friend_profiles.find(params[:id]).destroy
+    redirect_to friend_profiles_url, notice: "Profile was successfully removed"
+  end
+
   private
 
   def friend_profile_params
