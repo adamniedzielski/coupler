@@ -1,10 +1,19 @@
 <h1>Users</h1>
 
 <ul>
-	<% @users.each do |user| %>
+	<% @users_with_connections.each do |user, connection, incoming, outgoing| %>
 		<li>
 		  <%= user.email %>
-      <%= button_to "Connect", user_connection_requests_path(user) %>
+
+      <% if connection.present? %>
+        Connected
+      <% elsif incoming.present? %>
+        <%= button_to "Accept", connection_request_connections_path(incoming) %>
+      <% elsif outgoing.present? %>
+          Sent
+      <% else %>
+        <%= button_to "Connect", user_connection_requests_path(user) %>
+      <% end %>
     </li>
 	<% end %>
 </ul>

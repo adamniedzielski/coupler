@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   resources :users, only: [:index] do
     resources :connection_requests, only: [:create]
   end
+  resources :connection_requests, only: [] do
+    resources :connections, only: [:create]
+  end
 
   # Defines the root path route ("/")
   root "friend_profiles#index"

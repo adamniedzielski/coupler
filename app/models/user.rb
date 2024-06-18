@@ -11,4 +11,5 @@ class User < ApplicationRecord
                                           dependent: :destroy, inverse_of: :from
   has_many :incoming_connection_requests, class_name: "ConnectionRequest", foreign_key: :to_id,
                                           dependent: :destroy, inverse_of: :to
+  has_many :connections, foreign_key: :from_id, dependent: :destroy, inverse_of: :from
 end

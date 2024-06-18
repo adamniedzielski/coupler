@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_17_144115) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_18_080704) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -21,6 +21,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_17_144115) do
     t.datetime "updated_at", null: false
     t.index ["from_id"], name: "index_connection_requests_on_from_id"
     t.index ["to_id"], name: "index_connection_requests_on_to_id"
+  end
+
+  create_table "connections", force: :cascade do |t|
+    t.bigint "from_id", null: false
+    t.bigint "to_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["from_id"], name: "index_connections_on_from_id"
+    t.index ["to_id"], name: "index_connections_on_to_id"
   end
 
   create_table "friend_profiles", force: :cascade do |t|
@@ -46,5 +55,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_17_144115) do
 
   add_foreign_key "connection_requests", "users", column: "from_id"
   add_foreign_key "connection_requests", "users", column: "to_id"
+  add_foreign_key "connections", "users", column: "from_id"
+  add_foreign_key "connections", "users", column: "to_id"
   add_foreign_key "friend_profiles", "users"
 end
