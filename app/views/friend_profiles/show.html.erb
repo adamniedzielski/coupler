@@ -2,12 +2,21 @@
 
 <p><%= @friend_profile.description %></p>
 
+<h2>Matched profiles</h2>
+
+<% @matched_profiles.each do |matched_profile| %>
+	<li>
+		<%= matched_profile.name %>
+		<%= matched_profile.description %>
+	</li>
+<% end %>
+
 <h2>Profiles for matching</h2>
 
 <% @profiles_for_matching.each do |profile_for_matching| %>
-	<li>
-		<%= profile_for_matching.name %>
-		<%= profile_for_matching.description %>
+  <li>
+    <%= profile_for_matching.name %>
+    <%= profile_for_matching.description %>
     <%= button_to "Match", friend_profile_matches_path(@friend_profile, to_friend_profile_id: profile_for_matching) %>
-	</li>
+  </li>
 <% end %>

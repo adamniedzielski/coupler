@@ -9,7 +9,8 @@ class FriendProfilesController < ApplicationController
 
   def show
     @friend_profile = current_user.friend_profiles.find(params[:id])
-    @profiles_for_matching = current_user.accessible_friend_profiles
+    @matched_profiles = (@friend_profile.outgoing_matched_profiles + @friend_profile.incoming_matched_profiles).uniq
+    @profiles_for_matching = current_user.accessible_friend_profiles - @matched_profiles
   end
 
   def new
