@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_18_080704) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_18_102457) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -41,6 +41,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_18_080704) do
     t.index ["user_id"], name: "index_friend_profiles_on_user_id"
   end
 
+  create_table "matches", force: :cascade do |t|
+    t.bigint "from_id", null: false
+    t.bigint "to_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["from_id"], name: "index_matches_on_from_id"
+    t.index ["to_id"], name: "index_matches_on_to_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -58,4 +67,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_18_080704) do
   add_foreign_key "connections", "users", column: "from_id"
   add_foreign_key "connections", "users", column: "to_id"
   add_foreign_key "friend_profiles", "users"
+  add_foreign_key "matches", "friend_profiles", column: "from_id"
+  add_foreign_key "matches", "friend_profiles", column: "to_id"
 end

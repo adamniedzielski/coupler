@@ -12,4 +12,6 @@ class User < ApplicationRecord
   has_many :incoming_connection_requests, class_name: "ConnectionRequest", foreign_key: :to_id,
                                           dependent: :destroy, inverse_of: :to
   has_many :connections, foreign_key: :from_id, dependent: :destroy, inverse_of: :from
+  has_many :connected_users, through: :connections, source: :to
+  has_many :accessible_friend_profiles, through: :connected_users, source: :friend_profiles
 end
